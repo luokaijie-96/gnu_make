@@ -1,9 +1,10 @@
 #sample Makefile 
 
-edit : main.o kbd.o command.o display.o \
+objects = main.o kbd.o command.o display.o \
 		insert.o search.o files.o utils.o 
-	cc -o edit main.o kbd.o command.o display.o \
-		insert.o search.o files.o utils.o 
+
+edit : $(objects) 
+	cc -o edit $(objects) 
 
 main.o : main.c defs.h 
 	cc -c main.c 
@@ -30,6 +31,5 @@ utils.o : utils.c defs.h
 	cc -c utils.c 
 
 clean : 
-	rm edit main.o kbd.o command.o display.o \
-		insert.o search.o files.o utils.o 
+	rm edit $(objects) 
 
