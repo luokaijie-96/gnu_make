@@ -6,29 +6,21 @@ objects = main.o kbd.o command.o display.o \
 edit : $(objects) 
 	cc -o edit $(objects) 
 
-main.o : main.c defs.h 
-	cc -c main.c 
+main.o :  defs.h 
 
-kbd.o : kbd.c defs.h command.h 
-	cc -c kbd.c 
+kbd.o :   defs.h command.h 
 
-command.o : command.c defs.h command.h 
-	cc -c command.c 
+command.o :  defs.h command.h 
 
-display.o : display.c defs.h buffer.h 
-	cc -c display.c 
+display.o :  defs.h buffer.h 
 
-insert.o : insert.c defs.h buffer.h 
-	cc -c insert.c 
+insert.o :  defs.h buffer.h 
 
-search.o : search.c defs.h buffer.h 
-	cc -c search.c 
+search.o :  defs.h buffer.h 
 
-files.o : files.c defs.h buffer.h command.h 
-	cc -c files.c 
+files.o :  defs.h buffer.h command.h 
 
-utils.o : utils.c defs.h 
-	cc -c utils.c 
+utils.o :  defs.h 
 
 clean : 
 	rm edit $(objects) 
