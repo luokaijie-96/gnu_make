@@ -1,0 +1,12 @@
+
+ifneq (, $(findstring t, $(MAKEFLAGS)))
+flag = t
+else
+flag = 
+endif
+
+.PHONY:all
+all:
+	+echo ${flag} 
+	#命令行前的“+”的意思是
+	#告诉 make，即使 make 使用了“-t”参数，“+”之后的命令都需要被执行。
