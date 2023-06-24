@@ -9,10 +9,17 @@ pathsearch = $(firstword $(wildcard $(addsuffix /$(1),$(subst :, ,$(PATH)))))
 lspath = $(wildcard $(addsuffix /$(1),$(subst :, ,$(PATH))))
 LS:= $(call pathsearch,ls)
 
+FOO = $PATH
 
+contents := $(shell head -5 Makefile_call)
+files := $(shell echo *.c)
 
 all:
 	echo ${foo}
 	echo ${lspath}
 	echo $(call lspath,ls)
 	echo ${LS}
+	echo ${FOO}
+	echo $(value FOO)
+	echo ${contents}
+	echo ${files}
