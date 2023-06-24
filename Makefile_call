@@ -1,0 +1,18 @@
+
+
+.PHONY:all
+
+
+reverse = $(2) $(1)
+foo = $(call reverse,a,b)
+pathsearch = $(firstword $(wildcard $(addsuffix /$(1),$(subst :, ,$(PATH)))))
+lspath = $(wildcard $(addsuffix /$(1),$(subst :, ,$(PATH))))
+LS:= $(call pathsearch,ls)
+
+
+
+all:
+	echo ${foo}
+	echo ${lspath}
+	echo $(call lspath,ls)
+	echo ${LS}
