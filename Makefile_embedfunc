@@ -1,0 +1,86 @@
+
+.PHONY: all
+
+# 字符串处理函数
+subst_func = $(subst ee,EE,feet on the street)
+
+patsubst_func = $(patsubst %.c,%.o,x.c.c bar.c)
+
+STR = a      b    c
+strip_func = $(strip $(STR))
+
+findstring_func1 = $(findstring a,a b c)
+findstring_func2 = $(findstring a, b bc)
+
+sources := foo.c bar.c baz.s  ugh.h
+filter_func = $(filter %c %s,$(sources))
+
+
+objects = main1.o foo.o main2.o ar.o
+mains = main1.o main2.o
+filter_out_func = $(filter-out $(mains),$(objects))
+
+
+sort_func1 = $(sort foo bar lose foo)
+sort_func2 = $(sort foo,bar,lose,foo)
+
+
+word_func1 = $(word 2, foo bar baz)
+word_func2 = $(word 4, foo bar baz)
+
+
+wordlist_func1 = $(wordlist 2,3,foo, bar baz zoo)
+wordlist_func2 = $(wordlist 4,3,foo, bar baz zoo)
+
+
+words_func = $(words foo bar)
+
+
+firstword_func = $(firstword foo bar)
+
+
+# 文件处理函数
+
+dir_func = $(dir src/foo.c hacks)
+
+notdir_func = $(notdir src/foo.c hacks)
+
+suffix_func = $(suffix src/foo.c src-1.0/bar.c hacks)
+
+basename_func = $(basename src/foo.c src-1.0/bar.c /home/jack/.font.cahce-1 hacks)
+
+addsuffix_func = $(addsuffix .c,foo bar)
+
+addprefix_func = $(addprefix src/,foo bar)
+
+join_func1 = $(join a b,.c .o)
+join_func2 = $(join a b c,.c .o)
+
+wildcard_func = $(wildcard *.c)
+
+all:
+	echo ${subst_func}
+	echo ${patsubst_func}
+	echo ${strip_func}
+	echo ${findstring_func1}
+	echo ${findstring_func2}
+	echo ${filter_func}
+	echo ${filter_out_func}
+	echo ${sort_func1}
+	echo ${sort_func2}
+	echo ${word_func1}
+	echo ${word_func2}
+	echo ${wordlist_func1}
+	echo ${wordlist_func2}
+	echo ${words_func}
+	echo $(word $(words foo bar),foo bar)
+	echo ${firstword_func}
+	echo ${dir_func}
+	echo ${notdir_func}
+	echo ${suffix_func}
+	echo ${basename_func}
+	echo ${addsuffix_func}
+	echo ${addprefix_func}
+	echo ${join_func1}
+	echo ${join_func2}
+	echo ${wildcard_func}
